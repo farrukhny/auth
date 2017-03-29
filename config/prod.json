@@ -1,6 +1,9 @@
 {
-    "DBHost":"localhost",
-    "DBUser": "user",
-    "DBPassword": "password",
-    "Database": "databasename" 
+    "AppName": "app_name",
+    "BaseURL": "base_url",
+    "Port": ":8500",
+    "Database": "database",
+    "DatabaseHost": "database_conn",
+    "DatabaseUser": "database_user",
+    "DatabasePassword": "database_password"
 }
