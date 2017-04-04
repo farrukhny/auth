@@ -1,9 +1,9 @@
 {
-    "AppName": "app_name",
-    "BaseURL": "base_url",
-    "Port": ":8500",
-    "Database": "database",
-    "DatabaseHost": "database_conn",
-    "DatabaseUser": "database_user",
-    "DatabasePassword": "database_password"
+    "app_name": "app_name",
+    "base_url": "base_url",
+    "port": ":8080",
+    "database": "database",
+    "database_host": "database_conn",
+    "database_user": "database_user",
+    "database_password": "database_password"
 }

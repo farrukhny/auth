@@ -7,17 +7,18 @@ import (
 )
 
 type config struct {
-	AppName          string `json:"app_name"`
-	BaseURL          string `json:"base_url"`
-	Port             string `json:"port"`
-	Database         string `json:"database"`
-	DatabaseHost     string `json:"database_host"`
-	DatabaseUser     string `json:"database_user"`
-	DatabasePassword string `json:"database_password"`
+	AppName          string `json:"app_name,omitempty"`
+	BaseURL          string `json:"base_url,omitempty"`
+	Port             string `json:"port,omitempty"`
+	Database         string `json:"database,omitempty"`
+	DatabaseHost     string `json:"database_host,omitempty"`
+	DatabaseUser     string `json:"database_user,omitempty"`
+	DatabasePassword string `json:"database_password,omitempty"`
 }
 
 // Read APPENV varible to pass config file name
-var APPENV = os.Getenv("APPENV") + ".json"
+
+var APPENV string = os.Getenv("APPENV")
 
 // AppConfig will hold configuration values from config file
 var AppConfig config
@@ -29,10 +30,14 @@ func initConfig() {
 
 // Read config file based on env
 func loadConfigFile() {
-	file, err := os.Open("config/" + APPENV)
+	if APPENV == "" {
+		APPENV = "dev"
+	}
+	file, err := os.Open("config/" + APPENV + ".json")
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer file.Close()
 
 	decoder := json.NewDecoder(file)
 	AppConfig = config{}
